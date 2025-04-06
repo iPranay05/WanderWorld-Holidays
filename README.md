@@ -1,4 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wonderland Holidays
+
+A modern travel website built with Next.js and Tailwind CSS for Wonderland Holidays, offering tour packages, destinations, and booking services.
+
+## Features
+
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Dynamic Pages**: Detail pages for tours, packages, and destinations
+- **Interactive UI**: Modern UI with animations and transitions
+- **Booking System**: Modal-based booking system for tours and packages
+- **Filtering Options**: Filter destinations by region and category
+
+## Tech Stack
+
+- **Next.js**: React framework for server-rendered applications
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **TypeScript**: Type-safe JavaScript
+- **React Hooks**: For state management and side effects
+
+## Project Structure
+
+- **Components**: Reusable UI components
+  - Navbar, Footer, Hero, etc.
+  - FeaturedDestinations, PopularTours, Packages
+  - BookingModal for handling bookings
+- **Data**: Static data for destinations, tours, packages
+- **Pages**: Main pages and dynamic routes
+  - Home page
+  - Destination, Tour, and Package detail pages
 
 ## Getting Started
 
@@ -8,29 +36,14 @@ First, run the development server:
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The site is deployed on Vercel. You can view the live site at [your-vercel-url].
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
