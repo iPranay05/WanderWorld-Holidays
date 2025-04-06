@@ -96,7 +96,7 @@ export default function TourDetailPage() {
               
               <h3 className="text-xl font-bold text-gray-900 mb-3">Tour Highlights</h3>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-                {selectedTour.features.map((feature: string, index: number) => (
+                {selectedTour.features && selectedTour.features.map((feature: string, index: number) => (
                   <li key={index} className="flex items-start">
                     <span className="text-emerald-500 mr-2"><i className="fas fa-check-circle mt-1"></i></span>
                     <span>{feature}</span>
