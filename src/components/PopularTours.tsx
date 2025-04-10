@@ -3,6 +3,8 @@
 import React from 'react';
 import { tours } from '@/data/tours';
 import Link from 'next/link';
+import { FiMapPin, FiClock, FiUsers, FiCalendar } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 interface PopularToursProps {
   setSelectedTour: (tour: any) => void;
@@ -26,72 +28,99 @@ const PopularTours: React.FC<PopularToursProps> = ({
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50" id="tours">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Wanderworld Tours</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">Discover our most loved tour packages curated for unforgettable experiences</p>
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Popular Tours</h2>
+            <div className="w-16 h-1 bg-indigo-600 mt-2 mb-4 rounded-full"></div>
+            <p className="text-gray-600">{displayTours.length} amazing tour packages</p>
+          </div>
+          
+          {showAll && (
+            <div className="flex items-center gap-2">
+              <select className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+                <option>Sort by: Popular</option>
+                <option>Sort by: Price (Low to High)</option>
+                <option>Sort by: Price (High to Low)</option>
+                <option>Sort by: Duration</option>
+              </select>
+            </div>
+          )}
         </div>
         
         {displayTours.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayTours.map((tour) => (
-              <div key={tour.id} className="bg-white rounded-lg shadow-lg overflow-hidden h-full transform transition-all duration-300 hover:scale-105 hover:shadow-xl tour-card">
+              <motion.div 
+                key={tour.id} 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300"
+              >
                 <div className="relative">
                   <img
                     src={tour.image}
                     alt={tour.name}
                     className="w-full h-56 object-cover"
                   />
-                  <div className="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium duration-badge">
-                    {tour.duration}
-                  </div>
-                  <div className="tour-overlay">
-                    <div className="tour-features">
-                      <div className="feature-item">
-                        <i className="fas fa-map-marker-alt text-white text-xl mb-1"></i>
-                        <span>Premium Locations</span>
-                      </div>
-                      <div className="feature-item">
-                        <i className="fas fa-utensils text-white text-xl mb-1"></i>
-                        <span>Gourmet Meals</span>
-                      </div>
-                      <div className="feature-item">
-                        <i className="fas fa-hotel text-white text-xl mb-1"></i>
-                        <span>Luxury Stays</span>
-                      </div>
-                    </div>
+                  <div className="absolute top-3 right-3 bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    {tour.price}
                   </div>
                 </div>
-                <div className="p-6 relative">
-                  <div className="tour-title-3d">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{tour.name}</h3>
+                <div className="p-5">
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="text-lg font-bold text-gray-900">{tour.name}</h3>
+                    <div className="flex items-center bg-indigo-50 px-2 py-1 rounded-md">
+                      <span className="text-yellow-500 mr-1">★</span>
+                      <span className="text-gray-700 text-sm font-medium">{tour.rating || '4.5'}</span>
+                    </div>
                   </div>
-                  <p className="text-gray-600 mb-4">{tour.description}</p>
-                  <div className="flex justify-between items-center mb-3">
-                    <p className="text-emerald-600 font-bold price-tag">{tour.price}</p>
+                  
+                  <div className="flex items-center text-gray-500 mb-3">
+                    <FiMapPin size={14} className="mr-1" />
+                    <span className="text-sm">{tour.location}</span>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-2 mb-4">
+                    <div className="flex items-center text-gray-500 text-sm">
+                      <FiClock size={14} className="mr-1" />
+                      <span>{tour.duration}</span>
+                    </div>
+                    <div className="flex items-center text-gray-500 text-sm">
+                      <FiUsers size={14} className="mr-1" />
+                      <span>{tour.groupSize || 'Small Group'}</span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    {tour.description}
+                  </p>
+                  
+                  <div className="flex flex-col gap-2">
                     <button
                       onClick={() => {
                         setSelectedTour(tour);
                         setShowBookingModal(true);
                       }}
-                      className="bg-emerald-600 text-white px-4 py-2 rounded-md font-medium hover:bg-emerald-700 transition duration-300 transform hover:scale-105 rounded-md whitespace-nowrap cursor-pointer book-button"
+                      className="w-full bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors duration-300"
                     >
                       Book Now
                     </button>
+                    <Link 
+                      href={`/tour/${tour.id}`}
+                      className="w-full text-center border border-indigo-600 text-indigo-600 py-2 rounded-lg font-medium hover:bg-indigo-50 transition-colors duration-300"
+                    >
+                      View Details
+                    </Link>
                   </div>
-                  <Link 
-                    href={`/tour/${tour.id}`}
-                    className="block w-full text-center border border-emerald-600 text-emerald-600 py-2 rounded-md font-medium hover:bg-emerald-50 transition duration-300 mt-2"
-                  >
-                    Learn More
-                  </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
+          <div className="text-center py-12 bg-white rounded-xl shadow-sm">
             <div className="text-5xl text-gray-300 mb-4">
-              <i className="fas fa-search"></i>
+              <FiCalendar size={60} className="mx-auto" />
             </div>
             <h3 className="text-xl font-medium text-gray-600 mb-2">No tours found</h3>
             <p className="text-gray-500">Try adjusting your search criteria</p>
@@ -100,68 +129,15 @@ const PopularTours: React.FC<PopularToursProps> = ({
         
         {/* View More Button - only show on home page */}
         {!showAll && (
-          <div className="text-center mt-8">
-            <a 
+          <div className="text-center mt-12">
+            <Link 
               href="/tours" 
-              className="inline-block bg-emerald-600 text-white px-6 py-3 rounded-md font-medium hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+              className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors duration-300"
             >
               View More Tours
-            </a>
+            </Link>
           </div>
         )}
-        
-        <style jsx>{`
-          .tour-card {
-            position: relative;
-            transform-style: preserve-3d;
-            transition: all 0.5s ease;
-          }
-          .tour-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background: linear-gradient(to top, rgba(5, 150, 105, 0.9), transparent);
-            transition: height 0.5s ease;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 20px;
-          }
-          .tour-card:hover .tour-overlay {
-            height: 100%;
-          }
-          .tour-features {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            padding: 0 10px;
-            transform: translateZ(30px);
-          }
-          .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
-            font-size: 0.875rem;
-          }
-          .duration-badge {
-            transform: translateZ(20px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          }
-          .tour-title-3d {
-            transform: translateZ(15px);
-          }
-          .price-tag {
-            transform: translateZ(10px);
-          }
-          .book-button {
-            transform: translateZ(25px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          }
-        `}</style>
       </div>
     </section>
   );

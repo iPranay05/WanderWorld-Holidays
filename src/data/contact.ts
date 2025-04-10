@@ -3,7 +3,7 @@ export interface SocialMedia {
   twitter: string;
   instagram: string;
   youtube: string;
-  linkedin?: string;
+  linkedin: string;
 }
 
 export interface ContactInfo {

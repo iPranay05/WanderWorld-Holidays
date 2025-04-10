@@ -10,6 +10,7 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import BookingModal from '@/components/BookingModal';
 import Footer from '@/components/Footer';
+import DestinationOfMonth from '@/components/DestinationOfMonth';
 
 export default function Home() {
   // State for active tab and section visibility
@@ -41,6 +42,9 @@ export default function Home() {
         setShowPackages={setShowPackages}
         setShowAbout={setShowAbout}
       />
+      
+      {/* Destination of the Month Section */}
+      <DestinationOfMonth setActiveTab={setActiveTab} />
       
       {/* Destinations Section */}
       <FeaturedDestinations 

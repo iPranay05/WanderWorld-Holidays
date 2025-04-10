@@ -6,6 +6,8 @@ export interface Destination {
   price: string;
   region: 'north' | 'south' | 'east' | 'west';
   experience: 'culture' | 'adventure' | 'nature';
+  location: string;
+  description: string;
 }
 
 export const destinations: Destination[] = [
@@ -16,7 +18,9 @@ export const destinations: Destination[] = [
     rating: 4.8,
     price: '₹15,999',
     region: 'north',
-    experience: 'culture'
+    experience: 'culture',
+    location: 'Northwestern India',
+    description: 'Experience the royal heritage of India with magnificent palaces, ancient forts, and vibrant culture in the land of kings.'
   },
   
   {
@@ -26,7 +30,9 @@ export const destinations: Destination[] = [
     rating: 4.9,
     price: '₹18,499',
     region: 'south',
-    experience: 'nature'
+    experience: 'nature',
+    location: 'Southwestern India',
+    description: 'Discover the serene backwaters, lush green landscapes, and pristine beaches in God\'s Own Country.'
   },
   {
     id: 3,
@@ -35,7 +41,9 @@ export const destinations: Destination[] = [
     rating: 4.7,
     price: '₹12,999',
     region: 'west',
-    experience: 'adventure'
+    experience: 'adventure',
+    location: 'Western Coast of India',
+    description: 'Enjoy the perfect blend of sun, sand, and sea along with vibrant nightlife and Portuguese-influenced architecture.'
   },
   {
     id: 4,
@@ -44,7 +52,9 @@ export const destinations: Destination[] = [
     rating: 4.8,
     price: '₹16,499',
     region: 'north',
-    experience: 'adventure'
+    experience: 'adventure',
+    location: 'Northern India',
+    description: 'Explore the breathtaking Himalayan landscapes, snow-capped mountains, and charming hill stations.'
   },
   {
     id: 5,
@@ -53,7 +63,9 @@ export const destinations: Destination[] = [
     rating: 4.6,
     price: '₹13,999',
     region: 'east',
-    experience: 'culture'
+    experience: 'culture',
+    location: 'Uttar Pradesh, North India',
+    description: 'Immerse yourself in one of the world\'s oldest living cities with its spiritual ghats, ancient temples, and rich cultural heritage.'
   },
   {
     id: 6,
@@ -62,6 +74,8 @@ export const destinations: Destination[] = [
     rating: 4.9,
     price: '₹24,999',
     region: 'east',
-    experience: 'nature'
+    experience: 'nature',
+    location: 'Bay of Bengal',
+    description: 'Discover paradise on earth with crystal clear waters, pristine beaches, and incredible marine life perfect for diving enthusiasts.'
   }
 ];

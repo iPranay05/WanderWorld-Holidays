@@ -2,125 +2,108 @@
 
 import React from 'react';
 import { aboutContent } from '@/data/about';
+import { FiCompass, FiClock, FiLinkedin, FiTwitter, FiMail, FiBriefcase } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50" id="about">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About Wanderworld Holidays</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">Your trusted partner for extraordinary travel experiences in India</p>
+        <div className="flex flex-col items-start mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">About Wonderland Holidays</h2>
+          <div className="w-16 h-1 bg-indigo-600 mt-2 mb-4 rounded-full"></div>
+          <p className="text-gray-600">Your trusted partner for extraordinary travel experiences in India</p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div className="bg-white rounded-lg shadow-lg p-8 transform transition-all duration-500 hover:shadow-2xl">
-            <h3 className="text-2xl font-bold text-emerald-600 mb-4">Our Mission</h3>
-            <p className="text-gray-700 leading-relaxed">{aboutContent.mission}</p>
-            <div className="mt-8 flex justify-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center">
-                <i className="fas fa-compass text-emerald-600 text-2xl"></i>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-all duration-300"
+          >
+            <div className="flex items-center mb-4">
+              <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
+                <FiCompass className="text-indigo-600 text-xl" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900">Our Mission</h3>
             </div>
-          </div>
+            <p className="text-gray-600 leading-relaxed">{aboutContent.mission}</p>
+          </motion.div>
           
-          <div className="bg-white rounded-lg shadow-lg p-8 transform transition-all duration-500 hover:shadow-2xl">
-            <h3 className="text-2xl font-bold text-emerald-600 mb-4">Our History</h3>
-            <p className="text-gray-700 leading-relaxed">{aboutContent.history}</p>
-            <div className="mt-8 flex justify-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center">
-                <i className="fas fa-history text-emerald-600 text-2xl"></i>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-all duration-300"
+          >
+            <div className="flex items-center mb-4">
+              <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
+                <FiClock className="text-indigo-600 text-xl" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900">Our History</h3>
             </div>
-          </div>
+            <p className="text-gray-600 leading-relaxed">{aboutContent.history}</p>
+          </motion.div>
         </div>
         
-        <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Meet Our Team</h3>
+        <div className="mb-8">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Meet Our Team</h3>
+          <div className="w-12 h-1 bg-indigo-600 mb-8 rounded-full"></div>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {aboutContent.team.map((member, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden team-card">
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300"
+            >
               <div className="relative">
                 <img
                   src={member.image}
                   alt={member.name}
                   className="w-full h-64 object-cover"
                 />
-                <div className="team-overlay">
-                  <div className="social-icons">
-                    <a href="#" className="social-icon">
-                      <i className="fab fa-linkedin-in"></i>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div className="p-4 w-full flex justify-center gap-4 mb-4">
+                    <a href="#" className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-colors duration-300">
+                      <FiLinkedin />
                     </a>
-                    <a href="#" className="social-icon">
-                      <i className="fab fa-twitter"></i>
+                    <a href="#" className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-colors duration-300">
+                      <FiTwitter />
                     </a>
-                    <a href="#" className="social-icon">
-                      <i className="fas fa-envelope"></i>
+                    <a href="#" className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-colors duration-300">
+                      <FiMail />
                     </a>
                   </div>
                 </div>
               </div>
-              <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h4>
-                <p className="text-emerald-600 font-medium mb-3">{member.position}</p>
-                <p className="text-gray-600">{member.bio}</p>
+              <div className="p-5">
+                <h4 className="text-lg font-bold text-gray-900 mb-1">{member.name}</h4>
+                <p className="text-indigo-600 text-sm font-medium mb-3">{member.position}</p>
+                <p className="text-gray-600 text-sm">{member.bio}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         
-        <div className="mt-16 bg-emerald-600 rounded-lg shadow-lg p-8 text-center text-white">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="mt-16 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-xl shadow-sm p-8 text-center text-white"
+        >
           <h3 className="text-2xl font-bold mb-4">Join Our Journey</h3>
           <p className="mb-6 max-w-3xl mx-auto">We're always looking for passionate individuals to join our team. If you love travel and want to help others experience the magic of India, we'd love to hear from you.</p>
-          <button className="bg-white text-emerald-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 rounded-md whitespace-nowrap cursor-pointer">
+          <button className="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-300 flex items-center mx-auto">
+            <FiBriefcase className="mr-2" />
             View Careers
           </button>
-        </div>
+        </motion.div>
       </div>
-      
-      <style jsx>{`
-        .team-card {
-          transition: all 0.3s ease;
-        }
-        .team-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .team-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(5, 150, 105, 0.8);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-        .team-card:hover .team-overlay {
-          opacity: 1;
-        }
-        .social-icons {
-          display: flex;
-          gap: 12px;
-        }
-        .social-icon {
-          width: 40px;
-          height: 40px;
-          background: white;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #059669;
-          font-size: 18px;
-          transition: all 0.3s ease;
-        }
-        .social-icon:hover {
-          transform: scale(1.1);
-          background: #f3f4f6;
-        }
-      `}</style>
     </section>
   );
 };
