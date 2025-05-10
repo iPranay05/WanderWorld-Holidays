@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiSearch, FiUser, FiMenu, FiX } from 'react-icons/fi';
+import { FiSearch, FiMenu, FiX } from 'react-icons/fi';
+import { ThemeToggle } from './ThemeToggle';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
   activeTab: string;
@@ -158,7 +160,8 @@ const Navbar: React.FC<NavbarProps> = ({
           
           {/* Right Side Icons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-600 hover:text-indigo-600 p-2 rounded-full hover:bg-indigo-50 transition-colors duration-200">
+            <ThemeToggle />
+            <button className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-gray-800 transition-colors duration-200">
               <FiSearch size={20} />
             </button>
             <button
